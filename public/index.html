@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant pièces moteur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Conversations</h2>
+        <button id="new-convo">+ Nouvelle</button>
+      </div>
+      <ul id="conversation-list" class="conversation-list"></ul>
+    </aside>
+
+    <main class="chat-container">
+      <!-- ✅ Badge de statut -->
+      <div class="status-indicator">🟢 IA en ligne</div>
+
+      <!-- ✅ Sélecteur de mode -->
+      <div class="mode-selector">
+        <label for="mode-select">Mode :</label>
+        <select id="mode-select">
+          <option value="pieces" selected>🔧 Recherche de pièces</option>
+          <option value="aide">📘 Aide et informations</option>
+        </select>
+      </div>
+
+      <!-- ✅ Zone des messages -->
+      <div id="chat-messages" class="chat-messages"></div>
+
+      <!-- ✅ Formulaire de chat -->
+      <form id="chat-form" class="chat-form">
+        <input type="text" id="chat-input" placeholder="Posez votre question ici..." autocomplete="off">
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <!-- ✅ Bandeau d’information -->
+      <div class="info-banner">
+        🛠️ MecanIA utilise l’intelligence artificielle pour vous guider vers les pièces les plus compatibles sur Amazon Canada.
+      </div>
+
+      <!-- ❌ Plus besoin de cet élément : indicateur remplacé par "..." dans le chat -->
+      <!-- <div id="loading-indicator" style="display: none;">⏳ L’IA cherche la pièce idéale...</div> -->
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

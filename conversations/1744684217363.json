@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Quel est le président du Canada ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé pour la confusion, mais en tant qu'assistant spécialisé dans les pièces pour petits moteurs thermiques, je suis uniquement en mesure de fournir des informations relatives aux moteurs et à leurs pièces. Pour toute question politique ou générale, je vous conseille de consuliter une autre source d'information."
+  }
+]

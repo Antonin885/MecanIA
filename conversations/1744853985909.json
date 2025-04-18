@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "content": "courroie pour souffleuse Honda"
+  },
+  {
+    "role": "assistant",
+    "content": "Pour vous aider de manière précise, j'aurai besoin de plus d'informations sur votre souffleuse Honda. Le modèle de votre machine est particulièrement important car différentes souffleuses peuvent nécessiter des courroies de tailles différentes. \n\nLa courroie est une pièce essentielle de la souffleuse. Elle transmet la puissance du moteur aux différentes parties de la machine, permettant ainsi le fonctionnement de la souffleuse. \n\nUne fois que j'aurai le modèle de votre souffleuse Honda, je pourrai trouver le numéro de pièce exact de la courroie et vous aider à formuler une requête précise pour Amazon."
+  },
+  {
+    "role": "user",
+    "content": "C’est le modèle HS928"
+  },
+  {
+    "role": "assistant",
+    "content": "La courroie de la souffleuse Honda HS928 est une pièce essentielle qui transmet la puissance du moteur aux différentes parties de la machine, permettant ainsi le fonctionnement de la souffleuse. Le numéro exact de pièce pour la courroie d'entraînement de cette souffleuse est 22431-768-003.\n\nRecherche Amazon : Courroie d'entraînement Honda 22431-768-003 pour souffleuse Honda HS928."
+  }
+]

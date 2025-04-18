@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "content": "Je cherche un carburateur pour ma souffleuse Honda HS928."
+  },
+  {
+    "role": "assistant",
+    "content": "Le carburateur de votre souffleuse Honda HS928 est une pièce essentielle pour le bon fonctionnement de votre machine. Le modèle exact de carburateur pour votre souffleuse est généralement indiqué dans le manuel de l'utilisateur. Si vous ne l'avez pas, vous pouvez également chercher une plaque d'identification sur le carburateur lui-même qui indique le numéro de pièce.\n\nCependant, si vous ne trouvez pas cette information, un carburateur couramment utilisé pour la souffleuse Honda HS928 est le modèle Honda 16100-ZL0-D66. Assurez-vous de vérifier si ce modèle est compatible avec votre machine avant de l'acheter."
+  },
+  {
+    "role": "user",
+    "content": "Je cherche un carburateur pour ma souffleuse Honda HS928."
+  },
+  {
+    "role": "assistant",
+    "content": "Le carburateur que vous recherchez pour votre souffleuse Honda HS928 est le Honda 16100-ZL0-D66. C'est un modèle spécifiquement conçu pour cette machine et assurera le bon fonctionnement de votre souffleuse.\n\nAssurez-vous tout de même de vérifier la compatibilité de cette pièce avec le modèle exact de votre machine avant de procéder à l'achat. Si vous avez un doute, n'hésitez pas à consulter un professionnel ou le service après-vente de Honda."
+  }
+]

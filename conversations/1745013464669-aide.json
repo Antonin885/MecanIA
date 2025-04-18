@@ -1,0 +1,58 @@
+[
+  {
+    "role": "user",
+    "content": "Ma tondeuse MTD a besoin d’une nouvelle courroie."
+  },
+  {
+    "role": "assistant",
+    "content": "Je comprends que vous avez besoin d'une nouvelle courroie pour votre tondeuse MTD. Cependant, il me manque quelques détails pour vous aider efficacement. Pourriez-vous me donner le modèle exact de votre tondeuse ? En outre, est-ce la courroie de la lame ou celle de la transmission qui a besoin d'être remplacée ? En général, une courroie de transmission pourrait être la MTD 954-04060C, tandis qu'une courroie de lame pourrait être la MTD 954-04001A. Cependant, ces numéros de pièces sont à titre indicatif et la compatibilité doit être vérifiée en fonction du modèle exact de votre tondeuse. Recherche Amazon : MTD courroie de tondeuse 954-04001A"
+  },
+  {
+    "role": "user",
+    "content": "Ma tondeuse MTD a besoin d’une nouvelle courroie."
+  },
+  {
+    "role": "assistant",
+    "content": "Pour vous aider à trouver la bonne courroie pour votre tondeuse MTD, j'ai besoin de quelques informations supplémentaires. Pouvez-vous me fournir le modèle exact de votre tondeuse MTD ? De plus, avez-vous besoin de la courroie d'entraînement ou de la courroie de la lame ? Pour vous donner une idée, la courroie d'entraînement MTD pourrait être la MTD 954-04060C et la courroie de la lame pourrait être la MTD 954-04001A. Ces numéros de pièces sont des exemples et la compatibilité doit être vérifiée en fonction du modèle exact de votre tondeuse.<br><br><a href=\"https://www.amazon.ca/dp/B0CZ3X1Z7C?tag=piecesmoteu05-20\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.amazon.ca/dp/B0CZ3X1Z7C?tag=piecesmoteu05-20</a>"
+  },
+  {
+    "role": "user",
+    "content": "Je veux une courroie pour souffleuse Ariens modèle 924050."
+  },
+  {
+    "role": "assistant",
+    "content": "Pour une souffleuse Ariens modèle 924050, la courroie de rechange que vous pourriez avoir besoin est probablement la courroie d'entraînement Ariens 07200020. C'est une courroie couramment utilisée dans de nombreux modèles de souffleuses Ariens. Cependant, je vous recommande fortement de vérifier la compatibilité de cette courroie avec votre modèle spécifique avant de faire un achat.<br><br><a href=\"https://www.amazon.ca/dp/B004MRBB64?tag=piecesmoteu05-20\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.amazon.ca/dp/B004MRBB64?tag=piecesmoteu05-20</a>"
+  },
+  {
+    "role": "user",
+    "content": "Je cherche une bobine pour un moteur Tecumseh HM80."
+  },
+  {
+    "role": "assistant",
+    "content": "Pour un moteur Tecumseh HM80, la bobine d'allumage que vous cherchez est probablement la Tecumseh 35135B. Cette bobine d'allumage est couramment utilisée dans de nombreux moteurs Tecumseh. Cependant, je vous recommande fortement de vérifier la compatibilité de cette bobine avec votre modèle spécifique avant de faire un achat.<br><br><a href=\"https://www.amazon.ca/dp/B09MQP9HKJ?tag=piecesmoteu05-20\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.amazon.ca/dp/B09MQP9HKJ?tag=piecesmoteu05-20</a>"
+  },
+  {
+    "role": "user",
+    "content": "J’ai une souffleuse, mais je ne connais pas la pièce, tu peux m’aider ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Bien sûr, je serais ravi de vous aider à identifier la pièce dont vous avez besoin pour votre souffleuse. Pour commencer, pourriez-vous me donner plus de détails ? Par exemple : 1. La marque et le modèle de votre souffleuse. 2. Le type de pièce dont vous avez besoin (par exemple, courroie, carburateur, bougie d'allumage, etc.)\n3. Si possible, une description du problème que vous rencontrez. Cela pourrait m'aider à identifier la pièce que vous pourriez avoir besoin de remplacer. Avec ces informations, je pourrais vous aider plus efficacement à identifier la pièce dont vous avez besoin."
+  },
+  {
+    "role": "user",
+    "content": "Ma tondeuse Honda HRR216 a besoin d’un filtre, mais je ne connais pas le numéro."
+  },
+  {
+    "role": "assistant",
+    "content": "Pour une tondeuse Honda HRR216, le filtre à air que vous pourriez avoir besoin est probablement le Honda 17211-ZL8-023. Ce filtre à air est couramment utilisé dans de nombreux modèles de tondeuses Honda. Cependant, je vous recommande fortement de vérifier la compatibilité de ce filtre avec votre modèle spécifique avant de faire un achat.<br><br><a href=\"https://www.amazon.ca/dp/B07JCPFJMK?tag=piecesmoteu05-20\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.amazon.ca/dp/B07JCPFJMK?tag=piecesmoteu05-20</a>"
+  },
+  {
+    "role": "user",
+    "content": "Je veux remplacer la pièce 951-10298 mais je ne suis pas sûr que c’est un filtre."
+  },
+  {
+    "role": "assistant",
+    "content": "Je peux confirmer que la pièce 951-10298 correspond à un filtre à air pour certains petits moteurs. Cette pièce est généralement compatible avec des modèles de moteurs MTD, Cub Cadet, Troy-Bilt et autres. Cependant, je vous recommande de vérifier la compatibilité de cette pièce avec votre modèle spécifique avant de faire un achat."
+  }
+]

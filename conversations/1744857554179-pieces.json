@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Je cherche un carburateur pour ma souffleuse Honda HS928, numéro de modèle SZAK-1234567."
+  },
+  {
+    "role": "assistant",
+    "content": "Il semble que vous cherchiez un carburateur pour votre souffleuse Honda HS928 avec le numéro de modèle SZAK-1234567. Malheureusement, le numéro de la pièce exacte n'est pas indiqué dans votre question. Cependant, le carburateur le plus couramment utilisé pour cette série de souffleuses est le Honda 16100-Z0L-023.\n\nAvant de faire un achat, je vous recommande de vérifier le numéro de la pièce sur votre carburateur existant ou dans le manuel de l'utilisateur pour vous assurer qu'il correspond. Si vous n'êtes pas sûr, vous pouvez également contacter le service clientèle de Honda pour confirmer.<br><br><a href=\"https://www.amazon.ca/dp/B0CHYLZ3NY?tag=piecesmoteu05-20\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.amazon.ca/dp/B0CHYLZ3NY?tag=piecesmoteu05-20</a>"
+  }
+]

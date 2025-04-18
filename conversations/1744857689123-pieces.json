@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "J’ai besoin d’un truc pour mon moteur rouge, tu sais, le truc qui fait démarrer."
+  },
+  {
+    "role": "assistant",
+    "content": "Il semble que vous ayez besoin d'un démarreur pour votre moteur. Cependant, pour vous aider à trouver la bonne pièce, j'aurais besoin de plus d'informations. Pouvez-vous me donner :\n\n1. Le type de machine (par exemple : souffleuse, tondeuse, tracteur à gazon, coupe-bordures, etc.)\n2. La marque du moteur\n3. Le modèle du moteur\n4. Le numéro du modèle du moteur\n\nAvec ces informations, je pourrai vous aider à trouver le bon démarreur pour votre moteur."
+  }
+]

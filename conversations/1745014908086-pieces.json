@@ -1,0 +1,34 @@
+[
+  {
+    "role": "user",
+    "content": "ashbdoc"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé, mais votre message n'est pas clair. Pouvez-vous fournir plus de détails ? Par exemple, le type de machine (tondeuse, souffleuse, etc.), la marque et le modèle, ainsi que le type de pièce ou le numéro de pièce que vous recherchez. Cela me permettra de vous aider de manière plus efficace."
+  },
+  {
+    "role": "user",
+    "content": "èljb;"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé, mais je n'ai pas pu comprendre votre demande. Pourriez-vous la reformuler, s'il vous plaît? J'aurais besoin de connaître le type de machine (souffleuse, tondeuse, tracteur à gazon, etc.), la marque et le modèle, ainsi que le type de pièce ou le numéro de pièce que vous recherchez."
+  },
+  {
+    "role": "user",
+    "content": ";kn;l"
+  },
+  {
+    "role": "assistant",
+    "content": "Je m'excuse, mais je ne suis pas en mesure de comprendre votre demande. Pourriez-vous s'il vous plaît fournir plus de détails ? J'ai besoin de savoir le type de machine (comme une tondeuse, une souffleuse, etc.), la marque et le modèle, ainsi que le type de pièce ou le numéro de pièce que vous recherchez. Cela m'aidera à vous fournir l'information la plus précise possible."
+  },
+  {
+    "role": "user",
+    "content": "lugtciytciku"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé, mais je ne suis pas en mesure de comprendre votre demande. Pourriez-vous s'il vous plaît reformuler en fournissant des informations détaillées ? J'aurais besoin de connaître le type de machine (par exemple, une tondeuse, une souffleuse, etc.), la marque et le modèle, ainsi que le type de pièce ou le numéro de pièce que vous recherchez. Cela me permettra de vous aider de manière plus précise."
+  }
+]

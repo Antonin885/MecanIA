@@ -1,0 +1,18 @@
+[
+  {
+    "role": "user",
+    "content": "Je cherche un carburateur"
+  },
+  {
+    "role": "assistant",
+    "content": "Voici une pièce possible : Carbhub Carburetor for W-albro LMT 5-4993 with Mounting Gasket Filter<br>\nCompatibilité estimée : 50%<br>\nNote : 4.3 / 5 (1487 avis)<br><br>\nhttps://www.amazon.ca/dp/B079FFNHBV?tag=piecesmoteu05-20"
+  },
+  {
+    "role": "user",
+    "content": "C’est pour un Honda HS928"
+  },
+  {
+    "role": "assistant",
+    "content": "Voici une pièce possible : CLCHUN Carburetor 16100-Z9L-811 for Honda GCV170LA Engine HRN216 HRX217 with Air Filter Spark Plug Lawn Mower, Silver<br>\nCompatibilité estimée : 55%<br>\nNote : 5 / 5 (1 avis)<br><br>\nhttps://www.amazon.ca/dp/B0D6FT362R?tag=piecesmoteu05-20"
+  }
+]
