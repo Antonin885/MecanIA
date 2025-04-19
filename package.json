@@ -12,11 +12,10 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "openai": "^4.95.1",
-    "puppeteer": "20.8.1"
+    "openai": "^4.95.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "18.20.0"
   },
   "author": "Ton Nom",
   "license": "MIT",

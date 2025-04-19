@@ -1,4 +1,5 @@
 const axios = require('axios');
+const cheerio = require('cheerio');
 
 const BASE_URL = 'https://api.scrapingbee.com/v1';
 
@@ -17,6 +18,7 @@ async function searchAmazonCA(query) {
   const results = [];
 
   try {
+    // 🔍 Étape 1 — Recherche sur Amazon via ScrapingBee
     const { data: html } = await axios.get(BASE_URL, {
       params: {
         api_key: process.env.SCRAPINGBEE_API_KEY,
@@ -25,7 +27,6 @@ async function searchAmazonCA(query) {
       },
     });
 
-    const cheerio = require('cheerio');
     const $ = cheerio.load(html);
 
     $('div[data-asin]').each((_, el) => {
@@ -37,6 +38,7 @@ async function searchAmazonCA(query) {
       }
     });
 
+    // 🔍 Étape 2 — Vérifie chaque page produit
     for (const product of results.slice(0, 10)) {
       const productURL = `https://www.amazon.ca/dp/${product.asin}`;
       const productPage = await axios.get(BASE_URL, {
@@ -48,6 +50,7 @@ async function searchAmazonCA(query) {
       });
 
       const pageText = normalize(productPage.data);
+
       if (containsAllTerms(pageText, terms)) {
         return {
           title: product.title,
@@ -56,8 +59,12 @@ async function searchAmazonCA(query) {
           compatibility: 100,
         };
       }
+
+      // Même si non parfait, on garde les infos
+      results.push({ asin: product.asin, title: product.title, image: product.image });
     }
 
+    // ❗ Si aucune correspondance parfaite, retourne quand même le 1er
     if (results.length > 0) {
       const first = results[0];
       return {
@@ -68,6 +75,7 @@ async function searchAmazonCA(query) {
       };
     }
 
+    // ❌ Aucun résultat
     return { title: null, image: null, link: null, compatibility: 0 };
   } catch (err) {
     console.error('❌ Erreur ScrapingBee/Amazon :', err.message || err);
