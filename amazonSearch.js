@@ -25,7 +25,7 @@ async function searchAmazonCA(query) {
     browser = await puppeteer.launch({
       headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: executablePath // Utilisation du chemin explicite
+      executablePath: executablePath
     });
 
     const page = await browser.newPage();
@@ -33,9 +33,13 @@ async function searchAmazonCA(query) {
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
     );
 
+    // 👉 Log visible dans Render
+    console.log('Navigating to:', searchURL);
     await page.goto(searchURL, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
     const productCards = await page.$$('[data-asin]');
+    console.log('Product Cards:', productCards.length); // 👉 Vérifie si des produits sont détectés
+
     for (const card of productCards.slice(0, 10)) {
       const asin = await card.evaluate(el => el.getAttribute('data-asin'));
       const title = await card.$eval('h2 span', el => el.textContent).catch(() => null);
