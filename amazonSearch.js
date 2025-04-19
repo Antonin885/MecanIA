@@ -1,12 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-// Simule un vrai navigateur pour éviter le blocage Amazon
-const headers = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122.0.0.0 Safari/537.36',
-  'Accept-Language': 'en-CA,en;q=0.9'
-};
-
+// 🔍 Télécharge le texte complet de la page produit
 async function fetchFullProductPageText(asin) {
   const url = `https://www.amazon.ca/dp/${asin}`;
   try {
