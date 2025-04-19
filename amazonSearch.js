@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const chromium = require('puppeteer/lib/cjs/puppeteer/node/ChromeLauncher');
 
 // ✅ Nettoie les textes
 function normalize(text) {
@@ -22,7 +23,7 @@ async function searchAmazonCA(query) {
     browser = await puppeteer.launch({
       headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: puppeteer.executablePath(), // important pour Render
+      executablePath: chromium.getExecutablePath('chrome') // ✅ compatible Render
     });
 
     const page = await browser.newPage();
