@@ -5,7 +5,12 @@ const cheerio = require('cheerio');
 async function fetchFullProductPageText(asin) {
   const url = `https://www.amazon.ca/dp/${asin}`;
   try {
-    const { data } = await axios.get(url, { headers });
+    const { data } = await axios.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept-Language': 'en-CA,en;q=0.9'
+      }
+    });
     const $ = cheerio.load(data);
     return $('body').text().replace(/\s+/g, ' ').toLowerCase();
   } catch (err) {
@@ -14,16 +19,24 @@ async function fetchFullProductPageText(asin) {
   }
 }
 
+// ✅ Vérifie que tous les termes sont dans la page
 function containsAllTerms(pageText, terms) {
   return terms.every(term => pageText.includes(term.toLowerCase()));
 }
 
+// 🔎 Recherche principale Amazon
 async function searchAmazonCA(query) {
   const parts = query.toLowerCase().split(/\s+/);
   const searchURL = `https://www.amazon.ca/s?k=${encodeURIComponent(query)}`;
 
   try {
-    const { data } = await axios.get(searchURL, { headers });
+    const { data } = await axios.get(searchURL, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept-Language': 'en-CA,en;q=0.9'
+      }
+    });
+
     const $ = cheerio.load(data);
     const products = [];
 
