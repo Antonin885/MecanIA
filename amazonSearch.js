@@ -1,7 +1,6 @@
-
 const puppeteer = require('puppeteer');
 
-// Utilisation d'un chemin alternatif pour éviter les erreurs sur Render
+// Vérification du chemin de Puppeteer
 const executablePath = process.env.PUPPETEER_EXEC_PATH || puppeteer.executablePath();
 
 // ✅ Nettoie les textes
