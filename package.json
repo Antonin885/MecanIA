@@ -12,13 +12,13 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "openai": "^4.95.1"
+    "openai": "^4.95.1",
+    "puppeteer": "^24.6.1"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "author": "Ton Nom",
   "license": "MIT",
-  "keywords": [],
-  "devDependencies": {}
+  "keywords": []
 }

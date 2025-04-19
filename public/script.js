@@ -98,7 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const formatted = formatAmazonResponse(data.reply);
       addMessage('bot', formatted);
 
-      localStorage.setItem(`title_${conversationId}`, message.slice(0, 30));
+      if (!localStorage.getItem(`title_${conversationId}`) || localStorage.getItem(`title_${conversationId}`) === 'Nouvelle conversation') {
+        localStorage.setItem(`title_${conversationId}`, message.slice(0, 30));
+      }
+
       updateConversationList(conversationId, message);
     } catch {
       removeTypingIndicator();
@@ -115,9 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
   modeSelect.addEventListener('change', () => {
     mode = modeSelect.value;
     const all = JSON.parse(localStorage.getItem(getStorageKey()) || '[]');
-    const current = all.find(id => id.endsWith('-' + mode)) || createNewConvo();
+    let current = all.find(id => id.endsWith('-' + mode));
+    if (!current) {
+      current = createNewConvo();
+    } else {
+      localStorage.setItem('currentConvo', current);
+    }
     conversationId = current;
-    localStorage.setItem('currentConvo', conversationId);
     chatMessages.innerHTML = '';
     loadConversation(conversationId);
     updateConversationList(conversationId);

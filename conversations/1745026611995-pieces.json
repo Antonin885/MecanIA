@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Je veux remplacer la bougie sur une souffleuse Ariens 926LE."
+  },
+  {
+    "role": "assistant",
+    "content": "D'accord, vous cherchez à remplacer la bougie de votre souffleuse Ariens 926LE. La bougie compatible la plus courante pour ce modèle est la NGK BPR6ES. Cependant, je vous recommande de vérifier le manuel de votre machine pour confirmer cette information."
+  }
+]
