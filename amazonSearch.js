@@ -16,12 +16,15 @@ async function searchAmazonCA(query) {
   const searchURL = `https://www.amazon.ca/s?k=${encodeURIComponent(query)}`;
   const results = [];
 
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  let browser;
 
   try {
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: puppeteer.executablePath(), // important pour Render
+    });
+
     const page = await browser.newPage();
     await page.setUserAgent(
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
@@ -57,13 +60,11 @@ async function searchAmazonCA(query) {
         };
       }
 
-      // Sauvegarde en cas d'absence de correspondance parfaite
       results.push({ asin, title, image });
     }
 
     await browser.close();
 
-    // ❗ Pas de correspondance parfaite, on retourne le premier résultat
     if (results.length > 0) {
       const first = results[0];
       return {
@@ -77,7 +78,7 @@ async function searchAmazonCA(query) {
     return { title: null, image: null, link: null, compatibility: 0 };
   } catch (err) {
     console.error('❌ Erreur Puppeteer/Amazon :', err.message || err);
-    await browser.close();
+    if (browser) await browser.close();
     return { title: null, image: null, link: null, compatibility: 0 };
   }
 }
