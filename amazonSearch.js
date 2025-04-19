@@ -1,42 +1,34 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-// 🔍 Télécharge le texte complet de la page produit
+// Simule un vrai navigateur pour éviter le blocage Amazon
+const headers = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122.0.0.0 Safari/537.36',
+  'Accept-Language': 'en-CA,en;q=0.9'
+};
+
 async function fetchFullProductPageText(asin) {
   const url = `https://www.amazon.ca/dp/${asin}`;
   try {
-    const { data } = await axios.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0',
-        'Accept-Language': 'en-CA,en;q=0.9'
-      }
-    });
+    const { data } = await axios.get(url, { headers });
     const $ = cheerio.load(data);
     return $('body').text().replace(/\s+/g, ' ').toLowerCase();
-  } catch {
+  } catch (err) {
+    console.error("❌ Erreur Amazon (page):", err.message);
     return '';
   }
 }
 
-// 🔢 Calcule le % de mots correspondants
-function calculateMatchScore(pageText, terms) {
-  let matches = 0;
-  terms.forEach(term => {
-    if (pageText.includes(term.toLowerCase())) matches++;
-  });
-  return Math.round((matches / terms.length) * 100);
+function containsAllTerms(pageText, terms) {
+  return terms.every(term => pageText.includes(term.toLowerCase()));
 }
 
-// 🔍 Recherche sur Amazon Canada
 async function searchAmazonCA(query) {
   const parts = query.toLowerCase().split(/\s+/);
   const searchURL = `https://www.amazon.ca/s?k=${encodeURIComponent(query)}`;
 
   try {
-    const { data } = await axios.get(searchURL, {
-      headers: { 'User-Agent': 'Mozilla/5.0' }
-    });
-
+    const { data } = await axios.get(searchURL, { headers });
     const $ = cheerio.load(data);
     const products = [];
 
@@ -49,31 +41,21 @@ async function searchAmazonCA(query) {
       }
     });
 
-    let bestMatch = null;
-    let bestScore = 0;
-
     for (const product of products.slice(0, 10)) {
       const pageText = await fetchFullProductPageText(product.asin);
-      const score = calculateMatchScore(pageText, parts);
-
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = product;
+      if (containsAllTerms(pageText, parts)) {
+        return {
+          title: product.title,
+          image: product.image,
+          link: `https://www.amazon.ca/dp/${product.asin}?tag=${process.env.AMAZON_TAG}`,
+          compatibility: 100
+        };
       }
-    }
-
-    if (bestMatch && bestScore >= 60) { // ✅ 60% minimum de compatibilité
-      return {
-        title: bestMatch.title,
-        image: bestMatch.image,
-        link: `https://www.amazon.ca/dp/${bestMatch.asin}?tag=${process.env.AMAZON_TAG}`,
-        compatibility: bestScore
-      };
     }
 
     return { title: null, image: null, link: null, compatibility: 0 };
   } catch (err) {
-    console.error("❌ Erreur Amazon :", err.message);
+    console.error("❌ Erreur Amazon (search):", err.message);
     return { title: null, image: null, link: null, compatibility: 0 };
   }
 }
