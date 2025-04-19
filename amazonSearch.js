@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
-// Vérification du chemin de Puppeteer
-const executablePath = process.env.PUPPETEER_EXEC_PATH || puppeteer.executablePath();
+// ✅ Chemin fixe vers Chrome sur Render
+const executablePath = '/opt/render/.cache/puppeteer/chrome/linux-135.0.7049.84/chrome-linux64/chrome';
 
 // ✅ Nettoie les textes
 function normalize(text) {
@@ -25,7 +25,7 @@ async function searchAmazonCA(query) {
     browser = await puppeteer.launch({
       headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: executablePath // 👈 important ici
+      executablePath: executablePath // 👈 forcé, plus de variable d'env
     });
 
     const page = await browser.newPage();
