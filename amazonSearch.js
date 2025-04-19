@@ -1,5 +1,8 @@
+
 const puppeteer = require('puppeteer');
-const chromium = require('puppeteer/lib/cjs/puppeteer/node/ChromeLauncher');
+
+// Utilisation d'un chemin alternatif pour éviter les erreurs sur Render
+const executablePath = process.env.PUPPETEER_EXEC_PATH || puppeteer.executablePath();
 
 // ✅ Nettoie les textes
 function normalize(text) {
@@ -23,7 +26,7 @@ async function searchAmazonCA(query) {
     browser = await puppeteer.launch({
       headless: 'new',
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: chromium.getExecutablePath('chrome') // ✅ compatible Render
+      executablePath: executablePath // Utilisation du chemin explicite
     });
 
     const page = await browser.newPage();
