@@ -1,74 +1,62 @@
-const puppeteer = require('puppeteer');
+const axios = require('axios');
 
-// ✅ Chemin fixe vers Chrome sur Render
-const executablePath = '/opt/render/.cache/puppeteer/chrome/linux-135.0.7049.84/chrome-linux64/chrome';
+const BASE_URL = 'https://api.scrapingbee.com/v1';
 
-// ✅ Nettoie les textes
 function normalize(text) {
   return text.toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
-// ✅ Vérifie que tous les mots sont présents
-function containsAllTerms(pageText, terms) {
-  return terms.every(term => normalize(pageText).includes(term.toLowerCase()));
+function containsAllTerms(text, terms) {
+  const cleanText = normalize(text);
+  return terms.every(term => cleanText.includes(term.toLowerCase()));
 }
 
-// ✅ Lance une recherche Amazon et récupère les résultats
 async function searchAmazonCA(query) {
   const terms = query.toLowerCase().split(/\s+/);
   const searchURL = `https://www.amazon.ca/s?k=${encodeURIComponent(query)}`;
   const results = [];
 
-  let browser;
-
   try {
-    browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: executablePath // 👈 forcé, plus de variable d'env
+    const { data: html } = await axios.get(BASE_URL, {
+      params: {
+        api_key: process.env.SCRAPINGBEE_API_KEY,
+        url: searchURL,
+        render_js: false,
+      },
     });
 
-    const page = await browser.newPage();
-    await page.setUserAgent(
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
-    );
+    const cheerio = require('cheerio');
+    const $ = cheerio.load(html);
 
-    console.log('Navigating to:', searchURL);
-    await page.goto(searchURL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    $('div[data-asin]').each((_, el) => {
+      const asin = $(el).attr('data-asin');
+      const title = $(el).find('h2 span').text().trim();
+      const image = $(el).find('img').attr('src');
+      if (asin && title) {
+        results.push({ asin, title, image });
+      }
+    });
 
-    const productCards = await page.$$('[data-asin]');
-    console.log('Product Cards:', productCards.length);
+    for (const product of results.slice(0, 10)) {
+      const productURL = `https://www.amazon.ca/dp/${product.asin}`;
+      const productPage = await axios.get(BASE_URL, {
+        params: {
+          api_key: process.env.SCRAPINGBEE_API_KEY,
+          url: productURL,
+          render_js: false,
+        },
+      });
 
-    for (const card of productCards.slice(0, 10)) {
-      const asin = await card.evaluate(el => el.getAttribute('data-asin'));
-      const title = await card.$eval('h2 span', el => el.textContent).catch(() => null);
-      const image = await card.$eval('img', el => el.src).catch(() => null);
-
-      if (!asin || !title) continue;
-
-      const productURL = `https://www.amazon.ca/dp/${asin}`;
-      const newPage = await browser.newPage();
-      await newPage.setUserAgent(
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
-      );
-      await newPage.goto(productURL, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      const bodyText = await newPage.evaluate(() => document.body.innerText);
-      await newPage.close();
-
-      if (containsAllTerms(bodyText, terms)) {
-        await browser.close();
+      const pageText = normalize(productPage.data);
+      if (containsAllTerms(pageText, terms)) {
         return {
-          title,
-          image,
-          link: `https://www.amazon.ca/dp/${asin}?tag=${process.env.AMAZON_TAG}`,
-          compatibility: 100
+          title: product.title,
+          image: product.image,
+          link: `https://www.amazon.ca/dp/${product.asin}?tag=${process.env.AMAZON_TAG}`,
+          compatibility: 100,
         };
       }
-
-      results.push({ asin, title, image });
     }
-
-    await browser.close();
 
     if (results.length > 0) {
       const first = results[0];
@@ -76,14 +64,13 @@ async function searchAmazonCA(query) {
         title: first.title,
         image: first.image,
         link: `https://www.amazon.ca/dp/${first.asin}?tag=${process.env.AMAZON_TAG}`,
-        compatibility: 60
+        compatibility: 60,
       };
     }
 
     return { title: null, image: null, link: null, compatibility: 0 };
   } catch (err) {
-    console.error('❌ Erreur Puppeteer/Amazon :', err.message || err);
-    if (browser) await browser.close();
+    console.error('❌ Erreur ScrapingBee/Amazon :', err.message || err);
     return { title: null, image: null, link: null, compatibility: 0 };
   }
 }
